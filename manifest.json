@@ -3,6 +3,6 @@
   "short_name": "Attendance Adv.",
   "description": "Test Description",
   "lang": "en-US",
-  "start_url": "https://navg.github.io/",
+  "start_url": "https://navg.github.io/index.html",
   "display": "standalone"
 }
