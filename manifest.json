@@ -4,5 +4,12 @@
   "description": "Test Description",
   "lang": "en-US",
   "start_url": "https://navg.github.io/index.html",
+   "icons": [
+    {
+      "src": "delta.png",
+      "sizes": "66x62",
+      "type": "image/png"
+    }
+  ],
   "display": "standalone"
 }
