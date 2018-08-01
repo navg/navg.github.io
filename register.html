@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+
+	<link rel="manifest" href="manifest.json">
+
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="application-name" content="Attendance Adv.">
+	<meta name="apple-mobile-web-app-title" content="Attendance Adv.">
+	<meta name="msapplication-starturl" content="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body onload="onLoadRegistration()">
+
+    <div class="login-container">
+        <section class="login" id="login">
+            <header>
+                <h2>Registration</h2>       
+            </header>
+        
+            <div class="mainContainer">
+                <div class="formContainer">
+                    <input type="text" id="mobile" name="mobile" class="login-input" placeholder="Mobile number..." required autofocus />
+                    <button id="register" class="login-button" onclick="getSuperintendentData()">REGISTER</button>
+                </div>
+            </div>
+        </section>
+        
+        <div id="status"></div>
+        
+        <div class="response reg-success" id="response-message">
+            <div id="responseMessage">Welcome Cpt Chondrogiannos Iakovos</div>                  
+        </div>
+          
+    </div>
+
+</body>
+</html>
