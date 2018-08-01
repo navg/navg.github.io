@@ -21,10 +21,13 @@ this.addEventListener('install', async function() {
  * , we can even make our own response from scratch !
  * Here, we are going to use cache first strategy
  */
-self.addEventListener('fetch', async function(event) {
+self.addEventListener('fetch', event => {
     //We defind the promise (the async code block) that return either the cached response or the network one
     //It should return a response object
-    const getCustomResponsePromise = async => {
+	
+	async function getCustomResponsePromise () {
+		
+    //const getCustomResponsePromise = async => {
         console.log(`URL ${event.request.url}`, `location origin ${location}`)
 
         try {
