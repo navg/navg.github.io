@@ -8,15 +8,6 @@ const API_VESSELS = API_BASE + "vessels"
 const HISTORY_STORAGE_KEY = 'HISTORY_KEY'
 
 /**
- * generate anime tag
- */
-function buildAnimeMarkup(anime) {
-    return `<div class="anime_item"><img class='anime_image' src=${anime.image_url} />
-        <h2 class='anime_name'>${anime.title}</h2>
-        <p class='anime_description'>${anime.aired_string}</p></div>`
-}
-
-/**
  * add an anime to the history and updates display
  */
 function updateHistory(anime) {
@@ -27,13 +18,6 @@ function updateHistory(anime) {
 
     //update display
     addAnimeToHistoryTag(anime)
-}
-
-/**
- * Update the DOM
- */
-function addAnimeToHistoryTag(anime) {
-    document.querySelector('#history').innerHTML = buildAnimeMarkup(anime) + document.querySelector('#history').innerHTML
 }
 
 /**
@@ -99,7 +83,7 @@ async function onLoadAsync() {
     
 
     if (vessels) {
-        let vesselsDropdown = document.getElementById("vessel");
+        let vesselsDropdown = document.getElementById("vessels_select");
         vesselsDropdown.length = 0;
 
         let defaultOption = document.createElement('option');
@@ -177,7 +161,7 @@ async function onUpdateVesselsButtonClickAsync() {
 async function onSendSMSClickAsync() {
 
     //Get Vessel/Departure/Est.CheckIn values
-    let selectedVessel = document.getElementById("vessel");
+    let selectedVessel = document.getElementById("vessels_select");
     let departureDate = document.getElementById("departure");
     let estCheckInDate = document.getElementById("checkIn");
     
