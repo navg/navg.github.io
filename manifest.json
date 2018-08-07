@@ -6,8 +6,8 @@
   "start_url": "https://navg.github.io/index.html",
    "icons": [
     {
-      "src": "delta.png",
-      "sizes": "66x62",
+      "src": "icon192.png",
+      "sizes": "192x124",
       "type": "image/png"
     }
   ],
