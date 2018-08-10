@@ -1,5 +1,3 @@
-//create an empty array on startup
-let animeHistory = []
 let vessels = [];
 let suptCompany = "";
 
@@ -10,7 +8,7 @@ const HISTORY_STORAGE_KEY = 'HISTORY_KEY'
 /**
  * add an anime to the history and updates display
  */
-function updateHistory(anime) {
+/*function updateHistory(anime) {
     animeHistory.push(anime)
 
     //Save the array in the local storage. JSON.stringify allows to serialize the array to a string
@@ -19,7 +17,7 @@ function updateHistory(anime) {
     //update display
     addAnimeToHistoryTag(anime)
 }
-
+*/
 /**
  * loadAnAnime from the internet and place it on a target element
  */
