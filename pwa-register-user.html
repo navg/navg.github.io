@@ -9,7 +9,7 @@
   <h1>Biometric Registration</h1>
   <p>Register your biometric data to create an account.</p>
 
-  <button id="registerButton">Register11</button>
+  <button id="registerButton">Register12</button>
 
   <script>
     // Check if the browser supports the necessary APIs
@@ -35,21 +35,24 @@
           .then((credential) => {
             // Registration successful, securely store the credential on the server
             console.log('Biometric registration successful! Credential:', credential);
+            alert('Biometric registration successful! Credential:' + credential);
 
             // Send the credential data to the server for storage
             // Implement the server-side logic to securely store the credential
 
             // Redirect the user to the login page or perform other actions
-            // window.location.href = '/login.html';
+            window.location.href = '/index.html';
           })
           .catch((error) => {
             // Registration failed
             console.error('Biometric registration failed:', error);
+            alert('Biometric registration failed:' + error);
           });
       });
     } else {
       // Biometric registration not supported or specific biometric option not available
       console.error('Biometric registration not supported in this browser or for this biometric option.');
+      alert('Biometric registration not supported in this browser or for this biometric option.');
       // Provide appropriate messaging to the user
       // For example:
       // document.getElementById('registerButton').disabled = true;
