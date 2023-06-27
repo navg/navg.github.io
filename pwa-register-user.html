@@ -9,60 +9,62 @@
   <h1>Biometric Registration</h1>
   <p>Register your biometric data to create an account.</p>
 
-  <button id="registerButton">Register12</button>
+  <button id="registerButton">Register</button>
 
   <script>
     // Check if the browser supports the necessary APIs
-    if ('credentials' in navigator && 'PreventSilentAccess' in window) {
+    if ('credentials' in navigator && 'create' in navigator.credentials && 'PreventSilentAccess' in window) {
       const registerButton = document.getElementById('registerButton');
 
       registerButton.addEventListener('click', () => {
         const uniqueUserID = '123456789'; // Replace with the actual unique user ID generated during registration
-        const challenge = generateRandomChallenge(); // Generate a random challenge value
 
-        const registerOptions = {
-          publicKey: {
-            challenge: challenge,
-            rp: { name: 'Your App Name' },
-            user: { id: uniqueUserID, name: 'User Name' },
-            authenticatorSelection: { userVerification: 'required' },
-            attestation: 'direct'
-          }
-        };
+        // Check for biometric registration support
+        if ('biometric' in navigator.credentials) {
+          const registerOptions = {
+            publicKey: {
+              // Specify the challenge and other options as needed
+              // For simplicity, this example doesn't cover the full range of options
+              challenge: new Uint8Array([ /* randomly generated challenge */ ]),
+              rp: { name: 'Your App Name' },
+              user: { id: uniqueUserID, name: 'User Name' },
+              authenticatorSelection: { userVerification: 'required' },
+              attestation: 'direct'
+            }
+          };
 
-        // Request biometric registration
-        navigator.credentials.create(registerOptions)
-          .then((credential) => {
-            // Registration successful, securely store the credential on the server
-            console.log('Biometric registration successful! Credential:', credential);
-            alert('Biometric registration successful! Credential:' + credential);
+          // Request biometric registration
+          navigator.credentials.create(registerOptions)
+            .then((credential) => {
+              // Registration successful, securely store the credential on the server
+              alert('Biometric registration successful! Credential:'+ credential);
 
-            // Send the credential data to the server for storage
-            // Implement the server-side logic to securely store the credential
+              // Send the credential data to the server for storage
+              // Implement the server-side logic to securely store the credential
 
-            // Redirect the user to the login page or perform other actions
-            window.location.href = '/index.html';
-          })
-          .catch((error) => {
-            // Registration failed
-            console.error('Biometric registration failed:', error);
-            alert('Biometric registration failed:' + error);
-          });
+              // Redirect the user to the login page or perform other actions
+              // window.location.href = '/login.html';
+            })
+            .catch((error) => {
+              // Registration failed
+              alert('Biometric registration failed:'+ error);
+            });
+        } else {
+          // Biometric registration not supported
+          alert('Biometric registration not supported in this browser.');
+          // Provide appropriate messaging to the user
+          // For example:
+          // document.getElementById('registerButton').disabled = true;
+          // document.getElementById('registerButton').innerText = 'Biometric registration not supported';
+        }
       });
     } else {
-      // Biometric registration not supported or specific biometric option not available
-      console.error('Biometric registration not supported in this browser or for this biometric option.');
-      alert('Biometric registration not supported in this browser or for this biometric option.');
+      // Web Authentication API not supported
+      alert('Web Authentication API not supported in this browser.');
       // Provide appropriate messaging to the user
       // For example:
       // document.getElementById('registerButton').disabled = true;
-      // document.getElementById('registerButton').innerText = 'Biometric registration not supported';
-    }
-
-    // Helper function to generate a random challenge
-    function generateRandomChallenge() {
-      const array = new Uint8Array(32); // 32 bytes = 256 bits (recommended length for the challenge)
-      return window.crypto.getRandomValues(array);
+      // document.getElementById('registerButton').innerText = 'Web Authentication not supported';
     }
   </script>
 </body>
