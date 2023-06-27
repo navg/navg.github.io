@@ -22,8 +22,8 @@
             // Specify the challenge and other options as needed
             // For simplicity, this example doesn't cover the full range of options
             challenge: new Uint8Array([ /* randomly generated challenge */ ]),
-            rp: { name: 'Your App Name' },
-            user: { id: new Uint8Array([ /* unique user ID */ ]), name: 'User Name' },
+            rp: { name: 'WKApp' },
+            user: { id: new Uint8Array([ 1234234234234234 ]), name: 'DDU' },
             authenticatorSelection: { userVerification: 'required' },
             attestation: 'direct'
           }
@@ -33,22 +33,22 @@
         navigator.credentials.create(registerOptions)
           .then((credential) => {
             // Registration successful, securely store the credential on the server
-            console.log('Fingerprint registration successful! Credential:', credential);
+            alert('Fingerprint registration successful! Credential:' + credential);
 
             // Send the credential data to the server for storage
             // Implement the server-side logic to securely store the credential
 
             // Redirect the user to the login page or perform other actions
-            // window.location.href = '/login.html';
+            window.location.href = '/index.html';
           })
           .catch((error) => {
             // Registration failed
-            console.error('Fingerprint registration failed:', error);
+            alert('Fingerprint registration failed:' + error);
           });
       });
     } else {
       // Fingerprint registration not supported
-      console.error('Fingerprint registration not supported in this browser.');
+      alert('Fingerprint registration not supported in this browser.');
     }
   </script>
 </body>
